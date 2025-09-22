@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "Abhisekh - Software Engineer, Open Source Enthusiast, Tech Blogger",
   generator: "Abhisekh",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
