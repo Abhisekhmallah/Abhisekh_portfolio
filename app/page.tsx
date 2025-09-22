@@ -189,7 +189,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <motion.a
-                  href="mailto:abhisekh@example.com"
+                  href="mailto:abhisekhmallah9@gmail.com"
                   className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
