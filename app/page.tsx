@@ -36,7 +36,7 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                   >
-                    Hello I am Abhisekh
+                    Hello I am Abhisekh.
                   </motion.span>
                   <br />
                   <motion.span
