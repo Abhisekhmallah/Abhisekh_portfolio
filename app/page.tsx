@@ -36,7 +36,7 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                   >
-                    Hello I am Abhisekh.
+                    Hello I am a
                   </motion.span>
                   <br />
                   <motion.span
@@ -44,7 +44,7 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                   >
-                    <AuroraText> I'm a FullStack Developer</AuroraText>
+                    <AuroraText> FullStack Developer</AuroraText>
                   </motion.span>
                 </motion.h1>
               </motion.div>
