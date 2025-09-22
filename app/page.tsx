@@ -172,7 +172,7 @@ export default function Home() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="text-center space-y-8">
+            <section id="contact" className="text-center space-y-8 pb-24">
               <motion.h2
                 className="text-3xl font-bold"
                 initial={{ opacity: 0, y: 30 }}
