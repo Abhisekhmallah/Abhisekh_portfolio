@@ -1,24 +1,26 @@
-name: Next.js CI
+name: Next.js CI with Security Scan
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-scan:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Download repository
-      - name: Checkout repository
+      # 1️⃣ Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node (NOT Java)
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
 
       # 3️⃣ Install dependencies
       - name: Install dependencies
@@ -27,3 +29,14 @@ jobs:
       # 4️⃣ Build Next.js app
       - name: Build project
         run: npm run build
+
+      # 5️⃣ Run Trivy filesystem scan
+      - name: Run Trivy FS Scan
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          format: table
+          exit-code: 1
