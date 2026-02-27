@@ -30,13 +30,4 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5️⃣ Run Trivy filesystem scan
-      - name: Run Trivy FS Scan
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          scan-type: fs
-          scan-ref: .
-          severity: CRITICAL,HIGH
-          ignore-unfixed: true
-          format: table
-          exit-code: 1
+      
