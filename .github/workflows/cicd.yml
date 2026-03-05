@@ -11,26 +11,34 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      # 1️⃣ Checkout repository
+      # 1️ Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
+      # 2️ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      # 3️⃣ Install dependencies
+      # 3️ Install dependencies
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # 4️⃣ Build Next.js app
+      # 4️ Build Next.js app
       - name: Build project
         run: npm run build
 
-      # 5️⃣ Run Trivy filesystem scan
+      # 5 SonarQube Scan continue-on-error: 
+      - name: SonarQube Scan
+        run: |
+          npx sonar-scanner \
+            -Dsonar.projectKey=nextjs-project \
+            -Dsonar.host.url=http://16.171.162.223:9000 \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+      # 6 Run Trivy filesystem scan
       - name: Run Trivy FS Scan
         uses: aquasecurity/trivy-action@0.20.0
         with:
