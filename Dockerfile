@@ -17,7 +17,7 @@ RUN npm run build
 
 
 # ---------- Stage 2: Production ----------
-FROM node:20-alpine AS runner
+FROM node:latest
 
 WORKDIR /app
 
