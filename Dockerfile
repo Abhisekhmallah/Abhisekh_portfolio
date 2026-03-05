@@ -1,29 +1,35 @@
 # ---------- Stage 1: Build ----------
-FROM node:latest
+
+FROM node:20 AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* pnpm-lock.yaml* ./
+# Copy dependency files
+
+COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm install
+
+RUN npm install --legacy-peer-deps
 
 # Copy project files
+
 COPY . .
 
 # Build Next.js application
+
 RUN npm run build
 
-
 # ---------- Stage 2: Production ----------
-FROM node:latest
+
+FROM node:20-alpine
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Copy only necessary files from builder
+# Copy built files from builder stage
+
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
@@ -32,4 +38,4 @@ COPY --from=builder /app/next.config.mjs ./
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm","start"]
