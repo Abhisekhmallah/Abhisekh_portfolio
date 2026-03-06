@@ -7,7 +7,7 @@ import "./globals.css";
 import { DockDemo } from "@/components/DockDemo";
 
 export const metadata: Metadata = {
-  title: "Abhisekh",
+  title: "Abhi",
   description:
     "Abhisekh - Software Engineer, Open Source Enthusiast, Tech Blogger",
   generator: "Abhisekh",
